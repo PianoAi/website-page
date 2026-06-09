@@ -1,0 +1,32 @@
+@import "tailwindcss";
+@theme {
+  /* 基础颜色映射 */
+  --color-background: #080810;
+  --color-foreground: #e2e8f0;
+  --color-secondary: #64748b;
+  
+  /* 你的核心渐变/点缀色 */
+  --color-primary: #7c3aed;       /* 紫色 */
+  --color-accent-cyan: #06b6d4;   /* 青色 */
+  --color-accent-amber: #f59e0b;  /* 琥珀色 */
+
+  /* 字体映射 */
+  --font-mono: 'SF Mono', 'Fira Code', monospace;
+
+  /* 底部圆点呼吸动画 */
+  --animate-pulse-dot: pulse-dot 2s ease-in-out infinite;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    margin: 0;
+  }
+}
+
+/* 底部圆点动画关键帧 */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.3); }
+}
