@@ -1,0 +1,33 @@
+{
+  "name": "app",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "pnpm run build && wrangler dev",
+    "astro": "astro",
+    "generate-types": "wrangler types",
+    "deploy": "pnpm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^13.7.0",
+    "@astrojs/react": "^5.0.7",
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^6.4.5",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tailwindcss": "^4.3.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.99.0"
+  },
+  "overrides": {
+    "vite": "^7"
+  }
+}
