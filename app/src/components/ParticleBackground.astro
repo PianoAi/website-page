@@ -1,0 +1,61 @@
+<canvas id="bg-canvas" class="absolute inset-0 w-full h-full z-0"></canvas>
+
+<script>
+  const canvas = document.getElementById("bg-canvas") as HTMLCanvasElement | null;
+  const ctx = canvas?.getContext("2d");
+  if (canvas && ctx) {
+    let W: number, H: number;
+
+    const resize = () => {
+      W = canvas.width = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    const particles = Array.from({ length: 120 }, () => ({
+      x: Math.random(),
+      y: Math.random(),
+      r: Math.random() * 1.2 + 0.2,
+      a: Math.random(),
+      speed: Math.random() * 0.0002 + 0.00005,
+    }));
+
+    const orbs = [
+      { x: 0.2, y: 0.3, r: 220, c: "124,58,237", phase: 0, speed: 0.003 },
+      { x: 0.8, y: 0.6, r: 180, c: "6,182,212", phase: 2, speed: 0.004 },
+      { x: 0.5, y: 0.8, r: 150, c: "245,158,11", phase: 4, speed: 0.0025 },
+    ];
+
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H);
+
+      orbs.forEach((o) => {
+        o.phase += o.speed;
+        const cx = (o.x + Math.sin(o.phase) * 0.12) * W;
+        const cy = (o.y + Math.cos(o.phase * 0.7) * 0.1) * H;
+        const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, o.r);
+        g.addColorStop(0, `rgba(${o.c},0.18)`);
+        g.addColorStop(1, `rgba(${o.c},0)`);
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(cx, cy, o.r, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      particles.forEach((p) => {
+        p.a += p.speed;
+        if (p.a > 1) p.a = 0;
+        const alpha = Math.sin(p.a * Math.PI) * 0.8;
+        ctx.beginPath();
+        ctx.arc(p.x * W, p.y * H, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(draw);
+    };
+
+    draw();
+  }
+</script>

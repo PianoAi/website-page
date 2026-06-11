@@ -1,0 +1,113 @@
+---
+import ParticleBackground from "../ParticleBackground.astro";
+import PhoneMockup from "../PhoneMockup.astro";
+---
+
+<section class="relative flex min-h-150 items-center overflow-hidden bg-background pt-32 pb-20">
+  <ParticleBackground />
+
+  <div class="relative z-10 mx-auto grid max-w-300 items-center gap-16 px-6 sm:px-10 lg:grid-cols-2">
+    <div class="text-center lg:text-left">
+      <div
+        class="inline-block rounded-full border border-accent-cyan/40 bg-accent-cyan/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-cyan backdrop-blur-md"
+      >
+        AI-Powered Piano Learning
+      </div>
+
+      <h1
+        class="mt-6 text-[clamp(2.5rem,7vw,4.25rem)] font-extrabold leading-[1.05] tracking-tight bg-linear-to-br from-white via-[#a78bfa] to-accent-cyan bg-clip-text text-transparent"
+      >
+        Your AI Piano Teacher,
+        <br />
+        From First Note To Full Song
+      </h1>
+
+      <p class="mx-auto mt-6 max-w-110 text-base leading-relaxed text-secondary lg:mx-0">
+        PianoAi listens as you play, gives instant feedback on every note and
+        rhythm, and guides you with a practice path built just for you.
+      </p>
+
+      <div class="mt-10 flex justify-center lg:justify-start">
+        <div
+          class="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-3 text-sm text-secondary backdrop-blur-md"
+        >
+          <span class="text-lg">🍎</span>
+          Coming soon to the App Store
+        </div>
+      </div>
+    </div>
+
+    <div id="phone-stack" class="relative mx-auto hidden h-120 w-full max-w-104 lg:block lg:h-144">
+      <div class="pointer-events-none absolute inset-0 -z-10">
+        <div class="absolute top-1/4 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-primary/25 blur-3xl"></div>
+        <div class="absolute bottom-0 left-1/4 h-56 w-56 rounded-full bg-accent-cyan/15 blur-3xl"></div>
+      </div>
+
+      <div class="phone-layer absolute top-6 left-0 w-[44%]" data-depth="0.4">
+        <div class="phone-float phone-float-a">
+          <PhoneMockup label="Home" src="/screenshots/home.png" showLabel={false} />
+        </div>
+      </div>
+      <div class="phone-layer absolute top-0 right-0 w-[44%]" data-depth="0.4">
+        <div class="phone-float phone-float-b">
+          <PhoneMockup label="Discover" src="/screenshots/discover.png" showLabel={false} />
+        </div>
+      </div>
+      <div class="phone-layer absolute bottom-0 left-[21%] z-10 w-[58%]" data-depth="0.8">
+        <div class="phone-float phone-float-c">
+          <PhoneMockup label="Practice — Real-Time Feedback" src="/screenshots/practice.png" showLabel={false} />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes float-a {
+    0%, 100% { transform: rotate(-10deg) translateY(0); }
+    50% { transform: rotate(-8deg) translateY(-14px); }
+  }
+  @keyframes float-b {
+    0%, 100% { transform: rotate(10deg) translateY(0); }
+    50% { transform: rotate(8deg) translateY(-10px); }
+  }
+  @keyframes float-c {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-16px); }
+  }
+
+  .phone-float-a { animation: float-a 7s ease-in-out infinite; }
+  .phone-float-b { animation: float-b 8s ease-in-out infinite 0.5s; }
+  .phone-float-c { animation: float-c 6s ease-in-out infinite 1s; }
+
+  .phone-layer {
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+  }
+</style>
+
+<script>
+  const stack = document.querySelector<HTMLElement>("#phone-stack");
+  const layers = stack?.querySelectorAll<HTMLElement>(".phone-layer");
+
+  if (stack && layers?.length) {
+    stack.addEventListener("mousemove", (e) => {
+      const rect = stack.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+      layers.forEach((layer) => {
+        const depth = Number(layer.dataset.depth ?? "0.5");
+        const tx = x * 50 * depth;
+        const ty = y * 50 * depth;
+        layer.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+      });
+    });
+
+    stack.addEventListener("mouseleave", () => {
+      layers.forEach((layer) => {
+        layer.style.transform = "translate3d(0, 0, 0)";
+      });
+    });
+  }
+</script>

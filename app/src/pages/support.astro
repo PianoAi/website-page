@@ -1,0 +1,54 @@
+---
+import LegalLayout from "../layouts/LegalLayout.astro";
+
+const topics = [
+  {
+    title: "Account & Subscription",
+    description:
+      "Manage your account, switch between Free and Premium, or update your subscription through the App Store.",
+  },
+  {
+    title: "Microphone & Audio",
+    description:
+      "Make sure PianoAi has microphone permission in your device Settings, and that your piano or keyboard is within range for the best feedback accuracy.",
+  },
+  {
+    title: "Practice & Feedback",
+    description:
+      "Learn how PianoAi listens to your playing, scores your performance, and adapts your practice plan over time.",
+  },
+  {
+    title: "Billing & Refunds",
+    description:
+      "Premium subscriptions are billed and managed through the Apple App Store. Refund requests are handled by Apple directly.",
+  },
+];
+---
+
+{/* Placeholder copy — review with legal counsel before launch */}
+<LegalLayout
+  title="Support"
+  description="Get help with PianoAi — account, subscriptions, audio feedback, and more."
+  updated="June 2026"
+>
+  <p>
+    Need help with PianoAi? Browse the topics below, or check our
+    <a href="/#faq">FAQ</a> for answers to common questions.
+  </p>
+
+  <h2>Common Topics</h2>
+  <ul>
+    {topics.map((topic) => (
+      <li>
+        <strong>{topic.title}</strong> — {topic.description}
+      </li>
+    ))}
+  </ul>
+
+  <h2>Still Need Help?</h2>
+  <p>
+    If you can't find what you're looking for, reach out to our team at
+    <a href="mailto:support@pianoai.app">support@pianoai.app</a> and we'll
+    get back to you as soon as possible.
+  </p>
+</LegalLayout>

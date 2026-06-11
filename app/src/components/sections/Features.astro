@@ -1,0 +1,56 @@
+---
+import SectionHeading from "../SectionHeading.astro";
+
+const features = [
+  {
+    icon: "🎧",
+    title: "Real-Time AI Feedback",
+    description:
+      "Play and get instant note and rhythm correction as our AI listens along with you.",
+  },
+  {
+    icon: "🧭",
+    title: "Personalized Learning Path",
+    description:
+      "A practice plan tailored to your level and goals, built from your first assessment.",
+  },
+  {
+    icon: "🎼",
+    title: "Curated Song Library",
+    description:
+      "From simple nursery rhymes to your favorite pieces, leveled for every stage of learning.",
+  },
+  {
+    icon: "📈",
+    title: "Track Your Progress",
+    description:
+      "Visualize practice streaks, accuracy improvements, and skills mastered over time.",
+  },
+];
+---
+
+<section id="features" class="bg-background px-6 py-24 sm:px-10">
+  <div class="mx-auto max-w-300">
+    <SectionHeading
+      eyebrow="Features"
+      title="Everything you need to learn piano"
+      description="PianoAi combines AI listening technology with a friendly, structured curriculum designed for beginners."
+    />
+
+    <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {features.map((feature) => (
+        <div
+          class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md transition-colors hover:border-primary/40"
+        >
+          <div
+            class="flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-primary/20 to-accent-cyan/10 text-2xl"
+          >
+            {feature.icon}
+          </div>
+          <h3 class="mt-5 text-lg font-bold text-white">{feature.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-secondary">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

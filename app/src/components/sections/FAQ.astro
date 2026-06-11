@@ -1,0 +1,46 @@
+---
+import SectionHeading from "../SectionHeading.astro";
+
+const faqs = [
+  {
+    question: "Do I need a real piano or keyboard?",
+    answer:
+      "Yes — PianoAi listens to your playing, so you'll need an acoustic piano or a digital keyboard with audio output.",
+  },
+  {
+    question: "What skill level is PianoAi for?",
+    answer:
+      "PianoAi is designed for complete beginners through early intermediate players, with content that grows alongside your skills.",
+  },
+  {
+    question: "How does the AI feedback work?",
+    answer:
+      "As you play, PianoAi listens in real time and compares what you played to the music, highlighting wrong notes, timing, and rhythm.",
+  },
+  {
+    question: "Is there a free version?",
+    answer:
+      "Yes. PianoAi offers a free tier with a starter song library and basic feedback, with Premium unlocking the full experience.",
+  },
+  {
+    question: "When will PianoAi be available?",
+    answer:
+      "We're putting the finishing touches on the app. Check back soon — PianoAi is coming to the App Store.",
+  },
+];
+---
+
+<section id="faq" class="bg-background px-6 py-24 sm:px-10">
+  <div class="mx-auto max-w-180">
+    <SectionHeading eyebrow="FAQ" title="Frequently asked questions" />
+
+    <div class="mt-16 space-y-4">
+      {faqs.map((faq) => (
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
+          <h3 class="text-base font-bold text-white">{faq.question}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-secondary">{faq.answer}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

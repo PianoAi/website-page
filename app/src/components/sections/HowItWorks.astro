@@ -1,0 +1,47 @@
+---
+import SectionHeading from "../SectionHeading.astro";
+
+const steps = [
+  {
+    number: "01",
+    title: "Tell us your goal",
+    description:
+      "A quick assessment learns your experience level, goals, and the music you love.",
+  },
+  {
+    number: "02",
+    title: "Get your personalized plan",
+    description:
+      "AI builds a path of songs and exercises matched to your skill level — no guesswork.",
+  },
+  {
+    number: "03",
+    title: "Practice & improve",
+    description:
+      "Play along and get real-time feedback while PianoAi tracks your growth over time.",
+  },
+];
+---
+
+<section id="how-it-works" class="bg-background px-6 py-24 sm:px-10">
+  <div class="mx-auto max-w-300">
+    <SectionHeading
+      eyebrow="How It Works"
+      title="From first note to full song in three steps"
+    />
+
+    <div class="mt-16 grid gap-8 md:grid-cols-3">
+      {steps.map((step) => (
+        <div class="relative rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-md">
+          <div
+            class="text-[3rem] font-extrabold leading-none bg-linear-to-br from-primary/40 to-accent-cyan/30 bg-clip-text text-transparent"
+          >
+            {step.number}
+          </div>
+          <h3 class="mt-4 text-lg font-bold text-white">{step.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-secondary">{step.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

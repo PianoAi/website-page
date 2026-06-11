@@ -1,0 +1,43 @@
+---
+const pains = [
+  "Can't tell if you're playing the right notes",
+  "No feedback between lessons",
+  "Generic courses that don't fit your level",
+];
+---
+
+<section class="bg-background px-6 py-24 sm:px-10">
+  <div class="mx-auto grid max-w-300 items-center gap-12 lg:grid-cols-2">
+    <div class="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-md">
+      <div class="text-[11px] font-semibold uppercase tracking-[0.2em] text-secondary">
+        Practicing alone is hard
+      </div>
+      <ul class="mt-6 space-y-4">
+        {pains.map((pain) => (
+          <li class="flex items-start gap-3 text-secondary">
+            <span class="mt-1 text-accent-amber">✕</span>
+            <span>{pain}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <div
+        class="inline-block rounded-full border border-accent-cyan/40 bg-accent-cyan/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.2em] text-accent-cyan backdrop-blur-md"
+      >
+        The PianoAi Way
+      </div>
+      <h2
+        class="mt-5 text-[clamp(1.75rem,5vw,2.75rem)] font-extrabold leading-tight tracking-tight bg-linear-to-br from-white via-[#a78bfa] to-accent-cyan bg-clip-text text-transparent"
+      >
+        PianoAi listens, corrects, and adapts in real time.
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-secondary">
+        Every time you play, our AI hears what you hear — catching wrong
+        notes, timing slips, and tempo issues, then adjusting your practice
+        plan so you always know exactly what to work on next.
+      </p>
+    </div>
+  </div>
+</section>

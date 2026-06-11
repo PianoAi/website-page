@@ -1,0 +1,34 @@
+---
+const navItems = [
+  { label: "Features", href: "/#features" },
+  { label: "How it works", href: "/#how-it-works" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "FAQ", href: "/#faq" },
+];
+---
+
+<header class="absolute top-0 left-0 right-0 z-20">
+  <div class="mx-auto flex max-w-300 items-center justify-between px-6 py-6 sm:px-10">
+    <a href="/" class="flex items-center gap-2 text-lg font-extrabold tracking-tight text-white">
+      <img src="/logo.png" alt="PianoAi" class="h-7 w-7" />
+      Piano<span class="bg-linear-to-br from-[#a78bfa] to-accent-cyan bg-clip-text text-transparent">Ai</span>
+    </a>
+
+    <nav class="hidden items-center gap-8 md:flex">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="text-sm font-medium text-secondary transition-colors hover:text-white"
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <div
+      class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-secondary backdrop-blur-md"
+    >
+      Coming Soon
+    </div>
+  </div>
+</header>

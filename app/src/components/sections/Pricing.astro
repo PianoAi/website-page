@@ -1,0 +1,61 @@
+---
+import SectionHeading from "../SectionHeading.astro";
+
+const plans = [
+  {
+    name: "Free",
+    description: "Get started and learn the basics.",
+    features: [
+      "Starter song library",
+      "Basic note & rhythm feedback",
+      "Practice progress tracking",
+    ],
+    highlight: false,
+  },
+  {
+    name: "Premium",
+    description: "Unlock the full PianoAi experience.",
+    features: [
+      "Full song library, all levels",
+      "Advanced AI feedback & analysis",
+      "Personalized practice plans",
+      "Detailed progress analytics",
+    ],
+    highlight: true,
+  },
+];
+---
+
+<section id="pricing" class="bg-background px-6 py-24 sm:px-10">
+  <div class="mx-auto max-w-300">
+    <SectionHeading
+      eyebrow="Pricing"
+      title="Start free, upgrade when you're ready"
+    />
+
+    <div class="mx-auto mt-16 grid max-w-180 gap-8 sm:grid-cols-2">
+      {plans.map((plan) => (
+        <div
+          class:list={[
+            "rounded-3xl border p-8 backdrop-blur-md",
+            plan.highlight
+              ? "border-primary/50 bg-linear-to-br from-primary/15 to-accent-cyan/5"
+              : "border-white/10 bg-white/5",
+          ]}
+        >
+          <h3 class="text-lg font-bold text-white">{plan.name}</h3>
+          <p class="mt-1 text-sm text-secondary">{plan.description}</p>
+
+          <ul class="mt-6 space-y-3">
+            {plan.features.map((feature) => (
+              <li class="flex items-start gap-3 text-sm text-secondary">
+                <span class="mt-0.5 text-accent-cyan">✓</span>
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
